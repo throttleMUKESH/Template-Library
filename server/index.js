@@ -1,11 +1,13 @@
-import express from 'express';
-import mongoose from 'mongoose';
-import cors from 'cors';
-import dotenv from 'dotenv';
-import bodyParser from 'body-parser';
-import templateRoute from './routes/templateRoute.js';
 
-import connectDB from './database/db.js';
+const express = require('express');
+const mongoose = require('mongoose');
+const cors = require('cors');
+const dotenv = require('dotenv');
+// const bodyParser = require('body-parser'); // No need for bodyParser in Express 4.x
+
+const templateRoute = require('./routes/templateRoute');
+
+const connectDB = require('./database/db');
 
 connectDB();
 
@@ -14,7 +16,7 @@ dotenv.config();
 const app = express();
 
 app.use(cors());
-app.use(bodyParser.json());
+app.use(express.json());
 
 app.use('/api/templates', templateRoute);
 

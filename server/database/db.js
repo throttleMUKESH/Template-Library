@@ -1,12 +1,13 @@
-import mongoose from "mongoose";
+const mongoose = require("mongoose")
 
 const connectDB = async () => {
   try {
-    await mongoose.connect("mongodb://localhost:27017/TemplateLibrary");
-     console.log(`MongoDB connected ${mongoose.connection.host}`);
+    const conn = await mongoose.connect("mongodb://localhost:27017/TemplateLibrary");
+    console.log(`MongoDB connected: ${conn.connection.host}`);
   } catch (error) {
-    console.log(`mongoDB error ${error}`);
+    console.log(`MongoDB error: ${error}`);
   }
 };
 
-export default connectDB;
+module.exports = connectDB
+

@@ -1,4 +1,6 @@
-import mongoose from 'mongoose';
+// src/models/Template.js
+
+const mongoose = require("mongoose")
 
 const templateSchema = new mongoose.Schema({
   authorName: { type: String, required: true },
@@ -8,7 +10,10 @@ const templateSchema = new mongoose.Schema({
   authorWebsite: { type: String, required: true },
   templateName: { type: String, required: true },
   liveDemoUrl: { type: String, required: true },
+  downloadLink: { type: String, required: true },
+  templateDescription: { type: String, required: true },
   tags: { type: [String], required: true },
+  downloads: { type: Number, default: 0 },
 }, { timestamps: true });
 
-export default mongoose.model('Template', templateSchema);
+module.exports = mongoose.model('Template', templateSchema);
